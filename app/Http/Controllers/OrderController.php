@@ -23,12 +23,12 @@ class OrderController extends Controller
     public function update(Request $request, Order $order)
     {
         $request->validate([
-            'status' => 'required',
+            'status_en' => 'required',
         ]);
 
-        $order->status = "completed";
+        $order->status_en = "completed";
 
-        if ($order->status == "completed") {
+        if ($order->status_en == "completed") {
             // Move to CompletedOrders table
             $completedOrder = new CompletedOrder();
             $completedOrder->name = $order->name;
@@ -45,7 +45,7 @@ class OrderController extends Controller
         }
 
 
-        return redirect()->route('orders.index')->with('warning', 'Order updated successfully!');
+        return redirect()->route('orders.index')->with('warning', __('words.ProductUpdatedSuccessfully'));
     }
 
     public function show(Order $order)
@@ -56,7 +56,7 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         $order->delete();
-        return redirect()->route('orders.index')->with('danger', 'Order deleted successfully!');
+        return redirect()->route('orders.index')->with('danger', __('words.ProductDeletedSuccessfully'));
 
     }
 

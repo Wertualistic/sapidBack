@@ -39,12 +39,16 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required',
-            'desc' => 'required',
-            'img' => 'required|image|mimes:png,jpg|max:2048', // Adjust the max size as needed
+            'title_uz' => 'required',
+            'title_ru' => 'required',
+            'title_en' => 'required',
+            'desc_uz' => 'required',
+            'desc_ru' => 'required',
+            'desc_en' => 'required',
+            'category_id' => 'required',
+            'img' => 'image',
             'price' => 'required|numeric',
             'discount' => 'required|numeric',
-            'category_id' => 'required|exists:categories,id', // Validate that the selected category exists
         ]);
 
         $requestData = $request->all();
@@ -61,7 +65,7 @@ class ProductController extends Controller
 
         Product::create($requestData);
 
-        return redirect()->route('products.index')->with('success', 'Product added successfully!!!');
+        return redirect()->route('products.index')->with('success', __('words.ProductAddedSuccessfully'));
     }
 
 
@@ -88,8 +92,12 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $this->validate($request, [
-            'title' => 'required',
-            'desc' => 'required',
+            'title_uz' => 'required',
+            'title_ru' => 'required',
+            'title_en' => 'required',
+            'desc_uz' => 'required',
+            'desc_ru' => 'required',
+            'desc_en' => 'required',
             'category_id' => 'required',
             'img' => 'image',
             'price' => 'required|numeric',
@@ -109,7 +117,7 @@ class ProductController extends Controller
 
         $product->update($requestData);
 
-        return redirect()->route('products.index')->with('warning', "@lang('words.ProductUpdatedSuccessfully')");
+        return redirect()->route('products.index')->with('warning', __('words.ProductUpdatedSuccessfully'));
     }
 
     /**
@@ -118,6 +126,6 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->route('products.index')->with('danger', "@lang('words.ProductDeletedSuccessfully')");
+        return redirect()->route('products.index')->with('danger', __('words.ProductDeletedSuccessfully'));
     }
 }

@@ -21,7 +21,7 @@ class CompletedController extends Controller
     public function destroy(CompletedOrder $completedOrder)
     {
         $completedOrder->delete();
-        return redirect()->route('completedOrders.index')->with('danger', 'Order deleted successfully!');
+        return redirect()->route('completedOrders.index')->with('danger', __('words.ProductDeletedSuccessfully'));
 
     }
 }

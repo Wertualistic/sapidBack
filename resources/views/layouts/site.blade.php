@@ -57,16 +57,10 @@
 
                     </div>
 
-                    <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
-                            class="nav-link notification-toggle nav-link-lg"><i data-feather="bell" class="bell"></i>
+                    <li class="dropdown dropdown-list-toggle" style="margin-right: 30px"><a href="#"
+                            data-toggle="dropdown">{{ \App::getLocale() }}
                         </a>
                         <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
-                            <div class="dropdown-header">
-                                Notifications
-                                <div class="float-right">
-                                    <a href="#">Mark All As Read</a>
-                                </div>
-                            </div>
                             <div class="dropdown-list-content dropdown-list-icons">
                                 <a href="#" class="dropdown-item dropdown-item-unread"> <span
                                         class="dropdown-item-icon bg-primary text-white"> <i
@@ -80,9 +74,6 @@
                                 <a href="{{ route('language', 'uz') }}" class="dropdown-item">UZ</a>
                                 <a href="{{ route('language', 'ru') }}" class="dropdown-item">RU</a>
                                 <a href="{{ route('language', 'en') }}" class="dropdown-item">EN</a>
-                            </div>
-                            <div class="dropdown-footer text-center">
-                                <a href="#">View All <i class="fas fa-chevron-right"></i></a>
                             </div>
                         </div>
                     </li>
@@ -107,9 +98,9 @@
             <div class="main-content">
 
                 @yield('content')
-               
+
                 <div class="settingSidebar">
-                    <a href="javascript:void(0)" class="settingPanelToggle"> <i class="fa fa-spin fa-cog"></i>
+                    <a href="javascript:void(0)" class="settingPanelToggle"> <i class="fa fa-cog"></i>
                     </a>
                     <div class="settingSidebar-body ps-container ps-theme-default">
                         <div class=" fade show active">
@@ -136,16 +127,14 @@
                                     <label class="selectgroup-item">
                                         <input type="radio" name="icon-input" value="1"
                                             class="selectgroup-input select-sidebar">
-                                        <span class="selectgroup-button selectgroup-button-icon"
-                                            data-toggle="tooltip" data-original-title="Light Sidebar"><i
-                                                class="fas fa-sun"></i></span>
+                                        <span class="selectgroup-button selectgroup-button-icon" data-toggle="tooltip"
+                                            data-original-title="Light Sidebar"><i class="fas fa-sun"></i></span>
                                     </label>
                                     <label class="selectgroup-item">
                                         <input type="radio" name="icon-input" value="2"
                                             class="selectgroup-input select-sidebar" checked>
-                                        <span class="selectgroup-button selectgroup-button-icon"
-                                            data-toggle="tooltip" data-original-title="Dark Sidebar"><i
-                                                class="fas fa-moon"></i></span>
+                                        <span class="selectgroup-button selectgroup-button-icon" data-toggle="tooltip"
+                                            data-original-title="Dark Sidebar"><i class="fas fa-moon"></i></span>
                                     </label>
                                 </div>
                             </div>
@@ -240,6 +229,20 @@
             document.getElementById('changedArrow').classList.toggle('fa-arrow-left');
         });
     </script>
+
+    <script>
+        function translateText(inputId, outputId, fromLang, toLang) {
+            var inputValue = $('#' + inputId).val();
+            var url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=" + fromLang + "&tl=" + toLang +
+                "&dt=t&q=" + encodeURI(inputValue);
+
+            $.getJSON(url, function(data) {
+                var translatedText = data[0][0][0];
+                $('#' + outputId).val(translatedText);
+            });
+        }
+    </script>
+    @yield('js')
 </body>
 
 </html>

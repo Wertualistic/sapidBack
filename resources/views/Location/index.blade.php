@@ -3,10 +3,10 @@
 @section('content')
     <div class="row col-12">
         <div class="col-12 text-center">
-            <h1>Location Table</h1>
+            <h1>@lang('words.LocationsTable')</h1>
         </div>
         <div class="col-12 text-right mb-3">
-            <a href="{{ route('locations.create') }}" class="btn btn-success btn-sm">Create</a>
+            <a href="{{ route('locations.create') }}" class="btn btn-success btn-sm">@lang('words.Create')</a>
         </div>
         <div class="col-12">
             @if (session('success'))
@@ -40,11 +40,11 @@
                                     <th class="text-center">
                                         #
                                     </th>
-                                    <th>Title</th>
-                                    <th>Number</th>
-                                    <th>Email</th>
-                                    <th>Location</th>
-                                    <th colspan="3">Action</th>
+                                    <th>@lang('words.Title')</th>
+                                    <th>@lang('words.PhoneNumber')</th>
+                                    <th>@lang('words.Email')</th>
+                                    <th>@lang('words.Locationen')</th>
+                                    <th colspan="3">@lang('words.Action')</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -53,20 +53,20 @@
                                         <td>
                                             {{ $loop->iteration }}
                                         </td>
-                                        <td>{{ Str::substr($location->title, 0, 8) }}...</td>
+                                        <td>{{ Str::substr($location['title_' . \App::getLocale()], 0, 8) }}...</td>
                                         <td>{{ Str::substr($location->number, 0, 8) }}...</td>
                                         <td>{{ Str::substr($location->email, 0, 8) }}...</td>
-                                        <td>{{ Str::substr($location->location, 0, 8) }}...</td>
+                                        <td>{{ Str::substr($location['location_' . \App::getLocale()], 0, 8) }}...</td>
                                         <td class="d-flex justify-content-center align-items-center" style="gap: 15px">
                                             <a href="{{ route('locations.show', $location->id) }}"
-                                                class="btn btn-primary btn-sm">Show</a>
+                                                class="btn btn-primary btn-sm">@lang('words.Show')</a>
                                             <a href="{{ route('locations.edit', $location->id) }}"
-                                                class="btn btn-warning btn-sm">Edit</a>
+                                                class="btn btn-warning btn-sm">@lang('words.Edit')</a>
                                             <form action="{{ route('locations.destroy', $location->id) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-danger btn-sm"
-                                                    onclick="confirm('Are you want to delete?')">Delete</button>
+                                                    onclick="confirm('Are you want to delete?')">@lang('words.Delete')</button>
                                             </form>
                                         </td>
                                     </tr>

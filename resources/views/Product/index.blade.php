@@ -53,8 +53,8 @@
                                         <td>
                                             {{ $loop->iteration }}
                                         </td>
-                                        <td>{{ Str::substr($product->title, 0, 8) }}...</td>
-                                        <td>{{ Str::substr($product->desc, 0, 8) }}...</td>
+                                        <td>{{ Str::substr($product['title_' . \App::getLocale()], 0, 8) }}...</td>
+                                        <td>{{ Str::substr($product['desc_' . \App::getLocale()], 0, 8) }}...</td>
                                         <td>
                                             <img alt="image" src="{{ asset('/storage/products/' . $product->img) }}"
                                                 width="105">

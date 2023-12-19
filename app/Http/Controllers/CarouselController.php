@@ -31,8 +31,12 @@ class CarouselController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required',
-            'desc' => 'required',
+            'title_uz' => 'required',
+            'title_en' => 'required',
+            'title_ru' => 'required',
+            'desc_uz' => 'required',
+            'desc_en' => 'required',
+            'desc_ru' => 'required',
             'img' => 'required', // Adjust the max size as needed
             // Additional validation rules for Carousel fields
         ]);
@@ -53,7 +57,7 @@ class CarouselController extends Controller
 
         Carousel::create($requestData);
 
-        return redirect()->route('carousels.index')->with('success', 'Carousel added successfully!');
+        return redirect()->route('carousels.index')->with('success', __('words.ProductAddedSuccessfully'));
     }
 
 
@@ -79,8 +83,12 @@ class CarouselController extends Controller
     public function update(Request $request, Carousel $carousel)
     {
         $this->validate($request, [
-            'title' => 'required',
-            'desc' => 'required',
+            'title_uz' => 'required',
+            'title_en' => 'required',
+            'title_ru' => 'required',
+            'desc_uz' => 'required',
+            'desc_en' => 'required',
+            'desc_ru' => 'required',
             'img' => 'image',
         ]);
 
@@ -100,7 +108,7 @@ class CarouselController extends Controller
 
         $carousel->update($requestData);
 
-        return redirect()->route('carousels.index')->with('warning', 'Carousel updated successfully!');
+        return redirect()->route('carousels.index')->with('warning', __('words.ProductUpdatedSuccessfully'));
     }
 
 
@@ -110,6 +118,6 @@ class CarouselController extends Controller
     public function destroy(Carousel $carousel) // Update the model name
     {
         $carousel->delete();
-        return redirect()->route('carousels.index')->with('danger', 'Carousel deleted successfully!');
+        return redirect()->route('carousels.index')->with('danger', __('words.ProductDeletedSuccessfully'));
     }
 }

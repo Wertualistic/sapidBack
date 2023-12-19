@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ChatController;
 use App\Http\Controllers\CarouselController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CompletedController;
@@ -43,6 +44,7 @@ Route::resource('orders', OrderController::class);
 Route::resource('locations', LocationController::class);
 Route::resource('carousels', CarouselController::class);
 Route::resource('completedOrders', CompletedController::class);
+Route::get('chat', [ChatController::class, 'index']);
 
 Route::get('lang/{lang}', function ($lang) {
     session(['lang' => $lang]);

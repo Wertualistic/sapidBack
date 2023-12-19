@@ -31,8 +31,9 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
-            // Add more validation rules as needed
+            'name_uz' => 'required',
+            'name_ru' => 'required',
+            'name_en' => 'required',
         ]);
 
         Category::create($request->all());
@@ -72,7 +73,7 @@ class CategoryController extends Controller
 
     public function destroy(Category $category)
     {
-        $category->delete();    
+        $category->delete();
         Product::where('category_id', $category->id)->delete();
         return redirect()->route('categories.index')->with('danger', 'Category deleted successfully!');
     }

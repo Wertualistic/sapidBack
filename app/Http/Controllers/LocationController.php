@@ -30,15 +30,19 @@ class LocationController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required',
+            'title_uz' => 'required',
+            'title_ru' => 'required',
+            'title_en' => 'required',
             'number' => 'required',
             'email' => 'required|email',
-            'location' => 'required',
+            'location_uz' => 'required',
+            'location_ru' => 'required',
+            'location_en' => 'required',
         ]);
 
         Location::create($request->all());
 
-        return redirect()->route('locations.index')->with('success', 'Location added successfully!');
+        return redirect()->route('locations.index')->with('success', __('words.ProductAddedSuccessfully'));
     }
 
     /**
@@ -63,15 +67,19 @@ class LocationController extends Controller
     public function update(Request $request, Location $location)
     {
         $this->validate($request, [
-            'title' => 'required',
+            'title_uz' => 'required',
+            'title_ru' => 'required',
+            'title_en' => 'required',
             'number' => 'required',
             'email' => 'required|email',
-            'location' => 'required',
+            'location_uz' => 'required',
+            'location_ru' => 'required',
+            'location_en' => 'required',
         ]);
 
         $location->update($request->all());
 
-        return redirect()->route('locations.index')->with('success', 'Location updated successfully!');
+        return redirect()->route('locations.index')->with('success', __('words.ProductUpdatedSuccessfully'));
     }
 
     /**
@@ -80,6 +88,6 @@ class LocationController extends Controller
     public function destroy(Location $location)
     {
         $location->delete();
-        return redirect()->route('locations.index')->with('success', 'Location deleted successfully!');
+        return redirect()->route('locations.index')->with('success', __('words.ProductDeletedSuccessfully'));
     }
 }

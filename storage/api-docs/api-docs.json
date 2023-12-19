@@ -1,15 +1,11 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Your API",
-        "description": "Description of your API",
+        "title": "Название вашего API",
+        "description": "Описание вашего API",
         "contact": {
-            "name": "Contact Name",
-            "email": "contact@example.com"
-        },
-        "license": {
-            "name": "License Name",
-            "url": "https://www.example.com/license"
+            "name": "Ваше имя",
+            "email": "ваш.email@example.com"
         },
         "version": "1.0.0"
     },
@@ -501,6 +497,68 @@
                 "responses": {
                     "200": {
                         "description": "List of orders"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Create a new order",
+                "operationId": "2123ba58dadb22bd6f2c8081af562230",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "telephone": {
+                                        "type": "string"
+                                    },
+                                    "address": {
+                                        "type": "string"
+                                    },
+                                    "products": {
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "name_uz": {
+                                                    "type": "string"
+                                                },
+                                                "name_ru": {
+                                                    "type": "string"
+                                                },
+                                                "name_en": {
+                                                    "type": "string"
+                                                },
+                                                "quantity": {
+                                                    "type": "integer"
+                                                },
+                                                "price": {
+                                                    "type": "number"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "total_price": {
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Order created successfully"
+                    },
+                    "422": {
+                        "description": "Validation error"
                     }
                 }
             }

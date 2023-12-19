@@ -21,17 +21,17 @@
                                 <tbody>
                                     <tr>
                                         <td><strong>@lang('words.Title'):</strong></td>
-                                        <td>{{ $product->title }}</td>
+                                        <td>{{ $product['title_' . \App::getLocale()] }}</td>
                                     </tr>
                                     <tr>
                                         <td><strong>@lang('words.Description'):</strong></td>
-                                        <td>{{ $product->desc }}</td>
+                                        <td>{{ $product['desc_' . \App::getLocale()] }}</td>
                                     </tr>
                                     <tr>
                                         <td><strong>@lang('words.Image'):</strong></td>
                                         <td>
-                                            <img src="{{ asset('storage/products/' . $product->img) }}" alt="{{ $product->title }}"
-                                                class="img-thumbnail" style="max-width: 200px;">
+                                            <img src="{{ asset('storage/products/' . $product->img) }}"
+                                                alt="{{ $product->title }}" class="img-thumbnail" style="max-width: 200px;">
                                         </td>
                                     </tr>
                                     <tr>
@@ -44,7 +44,7 @@
                                     </tr>
                                     <tr>
                                         <td><strong>@lang('words.Category'):</strong></td>
-                                        <td>{{ $product->category->name }}</td>
+                                        <td>{{ $product->category['name_' . \App::getLocale()] }}</td>
                                     </tr>
                                     <tr>
                                         <td><strong>@lang('words.CreatedAt'):</strong></td>

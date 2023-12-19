@@ -35,23 +35,37 @@ class OrderController extends Controller
      *         required=true,
      *         @OA\JsonContent(
      *             type="object",
-     *             @OA\Property(property="status", type="string"),
-     *             // Add other properties as needed
+     *             @OA\Property(property="name", type="string"),
+     *             @OA\Property(property="telephone", type="string"),
+     *             @OA\Property(property="address", type="string"),
+     *             @OA\Property(property="products", type="array",
+     *                 @OA\Items(
+     *                     type="object",
+     *                     @OA\Property(property="name_uz", type="string"),
+     *                     @OA\Property(property="name_ru", type="string"),
+     *                     @OA\Property(property="name_en", type="string"),
+     *                     @OA\Property(property="quantity", type="integer"),
+     *                     @OA\Property(property="price", type="number"),
+     *                 )
+     *             ),
+     *             @OA\Property(property="total_price", type="number"),
      *         )
      *     ),
      *     @OA\Response(response="201", description="Order created successfully"),
      *     @OA\Response(response="422", description="Validation error"),
      * )
      */
+
+
     public function store(Request $request)
     {
         try {
             $request->validate([
                 'name' => "required",
                 'telephone' => "required",
+                'address' => "required",
                 'products' => "required|array",
                 'total_price' => "required",
-                // Add validation rules for other properties
             ]);
 
             $order = Order::create($request->all());

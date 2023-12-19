@@ -3,10 +3,10 @@
 @section('content')
     <div class="row col-12">
         <div class="col-12 text-center">
-            <h1>Carousel Table</h1>
+            <h1>@lang('words.CarouselsTable')</h1>
         </div>
         <div class="col-12 text-right mb-3">
-            <a href="{{ route('carousels.create') }}" class="btn btn-success btn-sm">Create</a>
+            <a href="{{ route('carousels.create') }}" class="btn btn-success btn-sm">@lang('words.Create')</a>
         </div>
         <div class="col-12">
             @if (session('success'))
@@ -40,10 +40,10 @@
                                     <th class="text-center">
                                         #
                                     </th>
-                                    <th>Title</th>
-                                    <th>Description</th>
-                                    <th>Image</th>
-                                    <th colspan="3">Action</th>
+                                    <th>@lang('words.Title')</th>
+                                    <th>@lang('words.Description')</th>
+                                    <th>@lang('words.Image')</th>
+                                    <th colspan="3">@lang('words.Action')</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -52,20 +52,20 @@
                                         <td>
                                             {{ $loop->iteration }}
                                         </td>
-                                        <td>{{ Str::substr($carousel->title, 0, 8) }}...</td>
-                                        <td>{{ Str::substr($carousel->desc, 0, 8) }}...</td>
+                                        <td>{{ Str::substr($carousel['title_' . \App::getLocale()], 0, 8) }}...</td>
+                                        <td>{{ Str::substr($carousel['desc_' . \App::getLocale()], 0, 8) }}...</td>
                                         <td><img alt="image" src="{{ asset('/storage/carousels/' . $carousel->img) }}"
                                                 width="105"></td>
                                         <td class="d-flex justify-content-center align-items-center" style="gap: 15px">
                                             <a href="{{ route('carousels.show', $carousel->id) }}"
-                                                class="btn btn-primary btn-sm">Show</a>
+                                                class="btn btn-primary btn-sm">@lang('words.Show')</a>
                                             <a href="{{ route('carousels.edit', $carousel->id) }}"
-                                                class="btn btn-warning btn-sm">Edit</a>
+                                                class="btn btn-warning btn-sm">@lang('words.Edit')</a>
                                             <form action="{{ route('carousels.destroy', $carousel->id) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-danger btn-sm"
-                                                    onclick="confirm('Are you want to delete?')">Delete</button>
+                                                    onclick="confirm('Are you want to delete?')">@lang('words.Delete')</button>
                                             </form>
                                         </td>
                                     </tr>

@@ -16,16 +16,48 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label>@lang('words.Title')</label>
-                            <input type="text" name="title" value="{{ old('title') }}" class="form-control"
-                                required="" placeholder="Title">
+                            <input id="title_uz" type="text" name="title_uz" value="{{ old('title_uz') }}"
+                                class="form-control" required="" placeholder="Title uz">
+                            <div class="invalid-feedback">
+                                What's the product title?
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>@lang('words.Title')</label>
+                            <input id="title_ru" type="text" name="title_ru" value="{{ old('title_ru') }}"
+                                class="form-control" required="" placeholder="Title ru">
+                            <div class="invalid-feedback">
+                                What's the product title?
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>@lang('words.Title')</label>
+                            <input id="title_en" type="text" name="title_en" value="{{ old('title_en') }}"
+                                class="form-control" required="" placeholder="Title en">
                             <div class="invalid-feedback">
                                 What's the product title?
                             </div>
                         </div>
                         <div class="form-group">
                             <label>@lang('words.Description')</label>
-                            <input type="text" name="desc" value="{{ old('desc') }}" class="form-control"
-                                required="" placeholder="Description">
+                            <input id="desc_uz" type="text" name="desc_uz" value="{{ old('desc_uz') }}"
+                                class="form-control" required="" placeholder="Description uz">
+                            <div class="invalid-feedback">
+                                What's the product description?
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>@lang('words.Description')</label>
+                            <input id="desc_ru" type="text" name="desc_ru" value="{{ old('desc_ru') }}"
+                                class="form-control" required="" placeholder="Description ru">
+                            <div class="invalid-feedback">
+                                What's the product description?
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>@lang('words.Description')</label>
+                            <input id="desc_en" type="text" name="desc_en" value="{{ old('desc_en') }}"
+                                class="form-control" required="" placeholder="Description en">
                             <div class="invalid-feedback">
                                 What's the product description?
                             </div>
@@ -56,15 +88,30 @@
                         <select name="category_id" class="form-control">
                             <option value="" selected disabled>Select a category</option>
                             @foreach ($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                <option value="{{ $category->id }}">{{ $category['name_' . \App::getLocale()] }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="card-footer text-right">
-                        <button class="btn btn-primary" type="submit">@lang('words.Submit')</button>
+                        <button class="btn btn-primary" type="submit">@lang('words.CreateProduct')</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+@endsection
+
+
+@section('js')
+    <script>
+        $('#title_uz').on('input', function() {
+            translateText('title_uz', 'title_en', 'uz', 'en');
+            translateText('title_uz', 'title_ru', 'uz', 'ru');
+        });
+
+        $('#desc_uz').on('input', function() {
+            translateText('desc_uz', 'desc_en', 'uz', 'en');
+            translateText('desc_uz', 'desc_ru', 'uz', 'ru');
+        });
+    </script>
 @endsection

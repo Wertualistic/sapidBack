@@ -74,31 +74,36 @@
         </div>
         <ul class="sidebar-menu mysidebar-menu">
             <li class="dropdown active">
-                <a href="/dashboard" class="nav-link"><i class="fa-solid fa-gauge"></i><span>@lang('words.Dashboard')</span></a>
+                <a href="/dashboard" class="nav-link"><i
+                        class="fa-solid fa-gauge fa-shake"></i><span>@lang('words.Dashboard')</span></a>
             </li>
             <li class="dropdown">
                 <a href="{{ route('products.index') }}" class="nav-link"><i
-                        class="fa-brands fa-product-hunt"></i><span>@lang('words.Product')</span></a>
+                        class="fa-brands fa-product-hunt fa-fade"></i><span>@lang('words.Products')</span></a>
             </li>
             <li class="dropdown">
                 <a href="{{ route('categories.index') }}" class="nav-link"><i
-                        class="fa-solid fa-layer-group"></i><span>@lang('words.Category')</span></a>
+                        class="fa-solid fa-layer-group fa-shake"></i><span>@lang('words.Category')</span></a>
             </li>
             <li class="dropdown">
                 <a href="{{ route('orders.index') }}" class="nav-link"><i
-                        class="fa-solid fa-truck"></i><span>@lang('words.Orders')</span></a>
+                        class="fa-solid fa-truck fa-fade"></i><span>@lang('words.Orders')</span></a>
             </li>
             <li class="dropdown">
                 <a href="{{ route('locations.index') }}" class="nav-link"><i
-                        class="fa-solid fa-location-dot"></i><span>@lang('words.Locations')</span></a>
+                        class="fa-solid fa-location-dot fa-shake"></i><span>@lang('words.Locations')</span></a>
             </li>
             <li class="dropdown">
                 <a href="{{ route('carousels.index') }}" class="nav-link"><i
-                        class="fa-brands fa-slack"></i><span>@lang('words.Carousel')</span></a>
+                        class="fa-brands fa-slack fa-fade"></i><span>@lang('words.Carousels')</span></a>
             </li>
             <li class="dropdown">
                 <a href="{{ route('completedOrders.index') }}" class="nav-link"><i
-                        class="fa-solid fa-check"></i><span>@lang('words.CompletedOrders')</span></a>
+                        class="fa-solid fa-check fa-shake"></i><span>@lang('words.CompletedOrders')</span></a>
+            </li>
+            <li class="dropdown">
+                <a href="/chat" class="nav-link"><i
+                        class="fa-brands fa-rocketchat fa-fade"></i><span>Chat</span></a>
             </li>
         </ul>
     </aside>

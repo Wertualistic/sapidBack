@@ -3,10 +3,10 @@
 @section('content')
     <div class="row">
         <div class="col-12 text-center">
-            <h1>Order Details</h1>
+            <h1>@lang('words.OrderDetails')</h1>
         </div>
         <div class="col-12 text-right mb-3">
-            <a href="{{ route('orders.index') }}" class="btn btn-warning btn-sm">Back</a>
+            <a href="{{ route('orders.index') }}" class="btn btn-warning btn-sm">@lang('words.Back')</a>
         </div>
         <div class="col-12">
             <div class="card">
@@ -18,19 +18,19 @@
                         <table class="table table-bordered">
                             <tbody>
                                 <tr>
-                                    <td><strong>Address:</strong></td>
+                                    <td><strong>@lang('words.Addressen'):</strong></td>
                                     <td>{{ $order->address }}</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>Phone number:</strong></td>
+                                    <td><strong>@lang('words.PhoneNumber'):</strong></td>
                                     <td>{{ $order->telephone }}</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>Created at:</strong></td>
+                                    <td><strong>@lang('words.CreatedAt'):</strong></td>
                                     <td>{{ $order->created_at }}</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>Updated at:</strong></td>
+                                    <td><strong>@lang('words.UpdatedAt'):</strong></td>
                                     <td>{{ $order->updated_at }}</td>
                                 </tr>
                             </tbody>
@@ -40,19 +40,19 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>Product name</th>
-                                    <th>Quantity</th>
-                                    <th>Price</th>
-                                    <th>Products Price</th>
+                                    <th>@lang('words.ProductName')</th>
+                                    <th>@lang('words.Quantity')</th>
+                                    <th>@lang('words.Price')</th>
+                                    <th>@lang('words.ProductsPrice')</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($order->products as $product)
                                     <tr>
-                                        <td>{{ $product['name'] }}</td>
+                                        <td>{{ $product['name_' . \App::getLocale()] }}</td>
                                         <td>{{ $product['quantity'] }}</td>
-                                        <td>{{ $product['price'] }} sum</td>
-                                        <td>{{ $product['quantity'] * $product['price'] }} sum</td>
+                                        <td>{{ $product['price'] }} @lang('words.sum')</td>
+                                        <td>{{ $product['quantity'] * $product['price'] }} @lang('words.sum')</td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -62,9 +62,9 @@
             </div>
             <div class="card mt-3">
                 <div class="card-body d-flex justify-content-between align-items-center">
-                    <h5 class="card-title">Total Price: {{ $order->total_price }} sum</h5>
+                    <h5 class="card-title">@lang('words.TotalPrice'): {{ $order->total_price }} @lang('words.sum')</h5>
                     <a class="btn btn-warning" href="#"
-                        onclick="completeOrder({{ $order->id }})">Completed</a>
+                        onclick="completeOrder({{ $order->id }})">@lang('words.Completed')</a>
                 </div>
             </div>
         </div>
@@ -95,7 +95,7 @@
             // Status field
             var statusField = document.createElement('input');
             statusField.type = 'hidden';
-            statusField.name = 'status';
+            statusField.name = 'status_en';
             statusField.value = 'completed';
             form.appendChild(statusField);
 

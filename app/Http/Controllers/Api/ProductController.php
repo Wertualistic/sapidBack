@@ -6,23 +6,26 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
+/**
+ * @OA\Info(
+ *     title="Название вашего API",
+ *     version="1.0.0",
+ *     description="Описание вашего API",
+ *     @OA\Contact(
+ *         name="Ваше имя",
+ *         email="ваш.email@example.com"
+ *     )
+ * )
+ */
+
 class ProductController extends Controller
 {
     /**
      * @OA\Get(
-     *     path="/api/products/{lang}",
+     *     path="/api/products",
      *     tags={"Products"},
      *     summary="Get list of products",
-     *     @OA\Parameter(
-     *         name="lang",
-     *         in="path",
-     *         description="Language code",
-     *         required=true,
-     *         @OA\Schema(type="string")
-     *     ),
      *     @OA\Response(response="200", description="List of products"),
-     *     @OA\Response(response="400", description="Invalid language code"),
-     *     @OA\Response(response="500", description="Internal Server Error")
      * )
      */
     public function index()

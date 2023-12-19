@@ -3,10 +3,10 @@
 @section('content')
     <div class="row">
         <div class="col-12 text-center">
-            <h1>Category Table</h1>
+            <h1>@lang('words.CategoryTable')</h1>
         </div>
         <div class="col-12 text-right mb-3">
-            <a href="{{ route('categories.create') }}" class="btn btn-success btn-sm">Create</a>
+            <a href="{{ route('categories.create') }}" class="btn btn-success btn-sm">@lang('words.Create')</a>
         </div>
         <div class="col-12">
             @if (session('success'))
@@ -38,25 +38,25 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">#</th>
-                                    <th>Name</th>
-                                    <th colspan="3">Action</th>
+                                    <th>@lang('words.Name')</th>
+                                    <th colspan="3">@lang('words.Action')</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($categories as $category)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ Str::substr($category->name, 0, 8) }}...</td>
+                                        <td>{{ Str::substr($category['name_' . \App::getLocale()], 0, 8) }}...</td>
                                         <td class="d-flex justify-content-center align-items-center" style="gap: 15px">
                                             <a href="{{ route('categories.show', $category->id) }}"
-                                                class="btn btn-primary btn-sm">Show</a>
+                                                class="btn btn-primary btn-sm">@lang('words.Show')</a>
                                             <a href="{{ route('categories.edit', $category->id) }}"
-                                                class="btn btn-warning btn-sm">Edit</a>
+                                                class="btn btn-warning btn-sm">@lang('words.Edit')</a>
                                             <form action="{{ route('categories.destroy', $category->id) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-danger btn-sm"
-                                                    onclick="confirm('Are you sure you want to delete?')">Delete</button>
+                                                    onclick="confirm('Are you sure you want to delete?')">@lang('words.Delete')</button>
                                             </form>
                                         </td>
                                     </tr>
