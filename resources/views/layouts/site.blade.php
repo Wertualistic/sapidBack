@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <title>Dashboard</title>
     <!-- General CSS Files -->
@@ -66,9 +67,7 @@
                                         class="dropdown-item-icon bg-primary text-white"> <i
                                             class="fas
 												fa-code"></i>
-                                    </span> <span class="dropdown-item-desc"> {{ \App::getLocale() }} <span
-                                            class="time">2 Min
-                                            Ago</span>
+                                    </span> <span class="dropdown-item-desc"> {{ \App::getLocale() }}
                                     </span>
                                 </a>
                                 <a href="{{ route('language', 'uz') }}" class="dropdown-item">UZ</a>

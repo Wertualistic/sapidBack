@@ -48,7 +48,7 @@ class ProductController extends Controller
             'category_id' => 'required',
             'img' => 'image',
             'price' => 'required|numeric',
-            'discount' => 'required|numeric',
+
         ]);
 
         $requestData = $request->all();
@@ -61,6 +61,12 @@ class ProductController extends Controller
             $requestData['img'] = $fileName;
         } else {
             $requestData['img'] = 'nofoto.jpg';
+        }
+
+        if ($requestData['discount'] == 0) {
+            $requestData['discount'] = 0;
+        } else {
+            $requestData['discount'];
         }
 
         Product::create($requestData);
@@ -101,7 +107,6 @@ class ProductController extends Controller
             'category_id' => 'required',
             'img' => 'image',
             'price' => 'required|numeric',
-            'discount' => 'required|numeric',
         ]);
 
         $requestData = $request->all();
@@ -113,6 +118,11 @@ class ProductController extends Controller
             $requestData['img'] = $file->getClientOriginalName();
         } else {
             $requestData['img'] = $product->img;
+        }
+        if ($requestData['discount'] == 0) {
+            $requestData['discount'] = 0;
+        } else {
+            $requestData['discount'];
         }
 
         $product->update($requestData);

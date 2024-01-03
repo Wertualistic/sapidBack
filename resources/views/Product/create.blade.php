@@ -73,11 +73,8 @@
 
                         <div class="form-group">
                             <label>@lang('words.Price')</label>
-                            <input type="number" name="price" value="{{ old('price') }}" class="form-control"
+                            <input type="text" name="price" value="{{ old('price') }}" class="form-control"
                                 required="" placeholder="Price">
-                            <div class="invalid-feedback">
-                                What's the price?
-                            </div>
                         </div>
                         <div class="form-group">
                             <label>@lang('words.Discount')</label>

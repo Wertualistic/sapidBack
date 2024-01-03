@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\CarouselController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\ChatController;
+use App\Http\Controllers\Api\CompletedOrderController;
 use App\Http\Controllers\Api\LocationController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\ProductController;
@@ -29,5 +30,6 @@ Route::apiResource('/categories', CategoryController::class);
 Route::apiResource('/locations', LocationController::class);
 Route::apiResource('/carousels', CarouselController::class);
 Route::apiResource('/orders', OrderController::class);
+Route::apiResource('/CompletedOrders', CompletedOrderController::class);
 
 Route::post('messages', [ChatController::class, 'message']);

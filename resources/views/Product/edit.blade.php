@@ -80,7 +80,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="price">@lang('words.Price'):</label>
-                            <input type="number" name="price" id="price" class="form-control"
+                            <input type="text" name="price" id="price" class="form-control"
                                 value="{{ old('price', $product->price) }}" required>
                             @error('price')
                                 <div class="text-danger">{{ $message }}</div>
@@ -94,10 +94,7 @@
                         <div class="form-group">
                             <label for="discount">@lang('words.Discount'):</label>
                             <input type="number" name="discount" id="discount" class="form-control"
-                                value="{{ old('discount', $product->discount) }}" required>
-                            @error('discount')
-                                <div class="text-danger">{{ $message }}</div>
-                            @enderror
+                                value="{{ old('discount', $product->discount) }}">
                         </div>
                     </div>
 

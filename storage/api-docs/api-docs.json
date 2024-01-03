@@ -325,6 +325,180 @@
                 }
             }
         },
+        "/api/CompletedOrders": {
+            "get": {
+                "tags": [
+                    "CompletedOrders"
+                ],
+                "summary": "Get list of CompletedOrders",
+                "operationId": "65003a55ab6e162c3338212e478197e6",
+                "responses": {
+                    "200": {
+                        "description": "List of CompletedOrders"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "CompletedOrders"
+                ],
+                "summary": "Create a new CompletedOrder",
+                "operationId": "6ab0bb412f8b2d78e3bdab5dfd426701",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "telephone": {
+                                        "type": "string"
+                                    },
+                                    "address": {
+                                        "type": "string"
+                                    },
+                                    "products": {
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "name_uz": {
+                                                    "type": "string"
+                                                },
+                                                "name_ru": {
+                                                    "type": "string"
+                                                },
+                                                "name_en": {
+                                                    "type": "string"
+                                                },
+                                                "quantity": {
+                                                    "type": "integer"
+                                                },
+                                                "price": {
+                                                    "type": "number"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "total_price": {
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "CompletedOrder created successfully"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        },
+        "/api/CompletedOrders/{id}": {
+            "get": {
+                "tags": [
+                    "CompletedOrders"
+                ],
+                "summary": "Get a specific CompletedOrder",
+                "operationId": "3ed762f611d11393a570a8ac1b908f64",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "CompletedOrder ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "CompletedOrder details"
+                    },
+                    "404": {
+                        "description": "CompletedOrder not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "CompletedOrders"
+                ],
+                "summary": "Update a specific CompletedOrder",
+                "operationId": "65bfdad9577a0c09e63f0da730287c65",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "CompletedOrder ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "status": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "CompletedOrder updated successfully"
+                    },
+                    "404": {
+                        "description": "CompletedOrder not found"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "CompletedOrders"
+                ],
+                "summary": "Delete a specific CompletedOrder",
+                "operationId": "b0b36998cdb0e013e0e7c88c51d4114d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "CompletedOrder ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "CompletedOrder deleted successfully"
+                    },
+                    "404": {
+                        "description": "CompletedOrder not found"
+                    }
+                }
+            }
+        },
         "/api/locations": {
             "get": {
                 "tags": [

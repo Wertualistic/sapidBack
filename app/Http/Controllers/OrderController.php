@@ -36,7 +36,7 @@ class OrderController extends Controller
             $completedOrder->address = $order->address;
             $completedOrder->total_price = $order->total_price;
             $completedOrder->products = json_encode($order->products); // Convert array to JSON
-            $completedOrder->status = $order->status;
+            $completedOrder->status = "completed";
             // Set other attributes as needed
             $completedOrder->save();
 

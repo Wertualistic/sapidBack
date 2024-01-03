@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->text('address');
             $table->string('total_price');
             $table->json('products');
-            $table->text('status')->default('pending');
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }

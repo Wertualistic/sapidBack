@@ -76,8 +76,8 @@
 
         section .container {
             position: relative;
-            width: 800px;
-            height: 500px;
+            width: 1000px;
+            height: 700px;
             background: #fff;
             box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
             overflow: hidden;
@@ -258,6 +258,9 @@
                             Don't have an account ?
                             <a href="#" onclick="toggleForm();">Sign Up.</a>
                         </p>
+                        <p>
+                            <a href="{{ route('password.email') }}">Forgot your password?</a>
+                        </p>
                     </form>
                 </div>
             </div>
@@ -268,6 +271,9 @@
                         <h2>Create an account</h2>
                         <input type="text" name="name" placeholder="Name" />
                         <input type="email" name="email" placeholder="Email Address" />
+                        <div class="validationss">
+
+                        </div>
                         <div class="input">
                             <input type="password" name="password" placeholder="Password" autocomplete="off">
                             <i class="fas fa-eye"></i>
@@ -305,38 +311,45 @@
         integrity="sha512-b94Z6431JyXY14iSXwgzeZurHHRNkLt9d6bAHt7BZT38eqV+GyngIi/tVye4jBKPYQ2lBdRs0glww4fmpuLRwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-        // let register = document.getElementById('register');
-        // let att = register.getAttribute('action');
-        // register.addEventListener('submit', async (e) => {
-        //     e.preventDefault();
-        //     const options = {
-        //         method: 'GET',
-        //         url: 'https://validect-email-verification-v1.p.rapidapi.com/v1/verify',
-        //         params: {
-        //             email: 'akhambarov07@gmail.com'
-        //         },
-        //         headers: {
-        //             'X-RapidAPI-Key': 'a28a93b0c5msh3dcfd7d0796e3a2p170a1djsnfef0a6b1bd13',
-        //             'X-RapidAPI-Host': 'validect-email-verification-v1.p.rapidapi.com'
-        //         }
-        //     };
-        //     try {
-        //         const response = await axios.request(options);
-        //         console.log(response.data);
-        //         if (response.data.status == 'invalid') {
-        //             att = "";
-        //             console.log('invalid response');
-        //             console.log(att);
-        //         } else {
-        //             window.location.href = "http://127.0.0.1:8000/dashboard"
-        //             console.log('valid response');
-        //             console.log(att);
+        let register = document.getElementById('register');
+        let emailInput = document.querySelector('#register input[name="email"]');
+        let validationsDiv = document.querySelector('.validationss');
 
-        //         }
-        //     } catch (error) {
-        //         console.error(error);
-        //     }
-        // });
+        register.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const userEmail = emailInput.value;
+
+            const options = {
+                method: 'GET',
+                url: 'https://validect-email-verification-v1.p.rapidapi.com/v1/verify',
+                params: {
+                    email: userEmail,
+                },
+                headers: {
+                    'X-RapidAPI-Key': 'a28a93b0c5msh3dcfd7d0796e3a2p170a1djsnfef0a6b1bd13',
+                    'X-RapidAPI-Host': 'validect-email-verification-v1.p.rapidapi.com'
+                }
+            };
+
+            try {
+                const response = await axios.request(options);
+
+                console.log(response.data);
+
+                if (response.data.status == 'invalid') {
+                    validationsDiv.innerHTML = '<p style="color: red">Email is invalid</p>';
+                    console.log('Invalid email response');
+                } else {
+                    validationsDiv.innerHTML = '';
+
+                    console.log('Valid email response');
+                    register.submit();
+
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        });
     </script>
 
     <script>
